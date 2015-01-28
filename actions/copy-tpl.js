@@ -9,6 +9,7 @@ module.exports = function (from, to, context, tplSettings) {
   this.copy(from, to, {
     process: function (contents) {
       return _.template(contents.toString(), context, tplSettings);
-    }
+    },
+    globOptions: {}
   });
 };
