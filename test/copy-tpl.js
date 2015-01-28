@@ -17,6 +17,13 @@ describe('#copyTpl()', function () {
     this.fs.copyTpl(filepath, newPath, { name: 'new content' });
     assert.equal(this.fs.read(newPath), 'new content\n');
   });
+  
+  it('copy file and process contents as underscore template using glob patterns', function () {
+    var filepath = path.join(__dirname, 'fixtures/**/file-tpl-a.txt');
+    var newPath = '/new/path/file.txt';
+    this.fs.copyTpl(filepath, newPath, { name: 'new content' });
+    assert.equal(this.fs.read(newPath), 'new content\n');
+  });
 
   it('copy file with template settings', function() {
     var filepath = path.join(__dirname, 'fixtures/file-tpl-mustache.txt');
